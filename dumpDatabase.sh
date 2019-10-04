@@ -1,9 +1,11 @@
-DUMP_FILE_NAME="backupOn`date +%Y-%m-%d-%H-%M`.dump"
+DUMP_FILE_NAME="backup_`date +%Y-%m-%d-%H-%M`.dump"
 echo "Creating dump: $DUMP_FILE_NAME"
 
 cd pg_backup
 
-pg_dump -C -w --format=c --blobs > $DUMP_FILE_NAME
+pg_dump -C -w --format=p --blobs > $DUMP_FILE_NAME
+
+ls -1t | head -10 | tr '\r\n' ' '
 
 if [ $? -ne 0 ]; then
   rm $DUMP_FILE_NAME
