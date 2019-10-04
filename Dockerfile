@@ -7,7 +7,7 @@ ENV PGUSER='postgres@postgres'
 ENV PGPASSWORD='password'
 
 RUN apk update
-RUN apk add postgresql
+RUN apk add postgresql=10.10
 
 COPY dumpDatabase.sh .
 
