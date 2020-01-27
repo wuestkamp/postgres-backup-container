@@ -13,5 +13,7 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
+find . -type f -mtime +30 -exec rm -vf {} \;
+
 echo 'Successfully Backed Up'
 exit 0
