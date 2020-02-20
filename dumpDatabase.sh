@@ -3,7 +3,15 @@ echo "Creating dump: $DUMP_FILE_NAME"
 
 cd pg_backup
 
+echo
+echo "Finding files to delete"
+find . -type f -mtime +30
+echo
+
+echo
+echo "Now deleting the following files"
 find . -type f -mtime +30 -exec rm -vf {} \;
+echo
 
 pg_dump -C -w --format=p --blobs > $DUMP_FILE_NAME
 
