@@ -14,6 +14,8 @@ find . -type f -mtime +30 -exec rm -vf {} \;
 echo
 
 pg_dump -C -w --format=p --blobs > $DUMP_FILE_NAME
+zip $DUMP_FILE_NAME.zip $DUMP_FILE_NAME
+rm $DUMP_FILE_NAME
 
 ls -1t | head -10 | tr '\r\n' ' '
 
